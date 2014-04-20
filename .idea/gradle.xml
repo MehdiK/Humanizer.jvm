@@ -8,7 +8,7 @@
         <option name="gradleHome" value="$USER_HOME$/tools/gradle" />
         <option name="modules">
           <set>
-            <option value="$PROJECT_DIR$" />
+            <option value="E:\Users\christiaan\IdeaProjects\Lessthandot\Humanizer.jvm" />
           </set>
         </option>
       </GradleProjectSettings>

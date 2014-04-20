@@ -1,11 +1,11 @@
-package org.humanizer.tests.tests
+package org.humanizer.jvm.tests
 
 import org.junit.Test as Test
 import kotlin.test.assertEquals
 import java.util.ArrayList
 import java.util.HashMap
 import org.spek.*
-import org.humanizer.tests.humanize
+import org.humanizer.jvm.humanize
 
 public class PascalHumanizerTests(): Spek() {
     {
