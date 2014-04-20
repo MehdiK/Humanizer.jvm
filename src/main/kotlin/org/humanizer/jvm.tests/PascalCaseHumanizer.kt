@@ -1,4 +1,4 @@
-package org.humanizer.jvm
+package org.humanizer.tests
 
 
 

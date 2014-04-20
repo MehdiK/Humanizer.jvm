@@ -6,13 +6,16 @@ version = '1.0'
 
 repositories {
     mavenCentral()
+    maven {
+        url "http://repository.jetbrains.com/all"
+    }
 }
 
 
 sourceSets {
     main {
         kotlin {
-            srcDir "src/kotlin/main"
+            srcDir "src/main/kotlin"
         }
     }
     test {
@@ -26,6 +29,8 @@ sourceSets {
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.11'
     compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    compile "org.spek:spek:0.1.118"
+
 }
 buildscript {
     ext.kotlin_version = '0.7.270'

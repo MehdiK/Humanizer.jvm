@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Humanizer.jvm.iml" filepath="$PROJECT_DIR$/Humanizer.jvm.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Humanizer.jvm.tests.iml" filepath="$PROJECT_DIR$/Humanizer.jvm.tests.iml" />
     </modules>
   </component>
 </project>
