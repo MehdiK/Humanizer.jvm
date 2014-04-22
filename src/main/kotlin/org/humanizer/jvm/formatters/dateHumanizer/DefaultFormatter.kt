@@ -34,7 +34,7 @@ public class DefaultDateFormatter() {
         if (difference == 1.toLong()) {
             return "a minute " + suffix
         }
-        if (difference > 1.toLong() && difference < 45.toLong()) {
+        if (difference > 1.toLong() && difference < 60.toLong()) {
             return (difference).toString() + " minutes " + suffix
         }
         return "an hour " + suffix
