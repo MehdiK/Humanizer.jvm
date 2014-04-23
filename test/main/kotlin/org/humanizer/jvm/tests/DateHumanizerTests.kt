@@ -77,12 +77,12 @@ public class DateHumanizerTests(): Spek() {
         )
 
         givenData(data) {
-            on("calling humanize with " + it.input.toString() + " for timeunit " + it.timeUnit, {
+            on("calling humanize with ${it.input} for timeunit ${it.timeUnit}", {
                 val cal = GregorianCalendar()
                 cal.setTime(it.dateToUse)
                 cal.add(it.timeUnit, it.input)
                 val actual = cal.getTime().humanize(it.dateToUse)
-                it("should become ${it.expected}", {
+                it("should be ${it.expected}", {
                     shouldEqual(it.expected, actual)
                 })
             })
