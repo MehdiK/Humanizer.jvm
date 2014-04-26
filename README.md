@@ -12,7 +12,7 @@ The current build status on the CI server is <a href="http://teamcity.ginnivan.n
 
 # <a id="features">Features</a>
 
-## <a id="humanize-date>Humanize date</a>
+## <a id="humanize-date">Humanize date</a>
 
 ### Extension methods Humanize for Java.Util.Date objects
 
