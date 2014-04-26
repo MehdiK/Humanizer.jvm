@@ -6,6 +6,10 @@ import org.humanizer.jvm.formatters.dateHumanizer.DefaultDateFormatter
 import java.util.GregorianCalendar
 import java.util.Calendar
 
+fun Date.humanize() : String {
+    return this.humanize(GregorianCalendar().getTime())
+}
+
 fun Date.humanize(toCompareAgainst: Date): String {
     val formatter = DefaultDateFormatter()
     if(Math.abs(this.getDateDiff(toCompareAgainst, TimeUnit.MILLISECONDS))<=500)

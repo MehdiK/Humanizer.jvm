@@ -88,5 +88,14 @@ public class DateHumanizerTests(): Spek() {
             })
         }
 
-
+        given("date that is 1 year in the future") {
+            on("calling humanize against current date", {
+                val cal = GregorianCalendar()
+                cal.add(Calendar.MONTH, 13)
+                val actual = cal.getTime().humanize()
+                it("should be one year from now", {
+                    shouldEqual("one year from now", actual)
+                })
+            })
+        }
     }}
