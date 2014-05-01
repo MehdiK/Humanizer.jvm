@@ -9,6 +9,7 @@ The current build status on the CI server is <a href="http://teamcity.ginnivan.n
 ###Table of contents
  - [Features](#features)
    - [Humanize date](#humanize-date)
+   - [Ordinalize](#ordinalize)
 
 # <a id="features">Features</a>
 
@@ -16,7 +17,7 @@ The current build status on the CI server is <a href="http://teamcity.ginnivan.n
 
 ### Extension methods Humanize for Java.Util.Date objects
 
-You can `Humanize` an instance of `Jav.Util.Date` and get back a string telling how far back or forward in time that is compared to a given date:
+You can `Humanize` an instance of `Java.Util.Date` and get back a string telling how far back or forward in time that is compared to a given date:
 
 ```kotlin
 val cal = GregorianCalendar()
@@ -33,7 +34,7 @@ cal.getTime.add(Calendar.HOURS, 2)
 cal.getTime().Humanize(dateToUse) => "2 hours from now"
 ```
 
-Or you can `Humanize` an instance of `Jav.Util.Date` and get back a string telling how far back or forward in time that is compared to the current date:
+Or you can `Humanize` an instance of `Java.Util.Date` and get back a string telling how far back or forward in time that is compared to the current date:
 
 ```kotlin
 val cal = GregorianCalendar()
@@ -48,3 +49,26 @@ cal.getTime.add(Calendar.HOURS, 2)
 cal.getTime().Humanize() => "2 hours from now"
 ```
 
+## <a id="ordinalize">Ordinalize</a>
+
+### Extension method Ordinalize for Int objects
+
+You can `Ordinalize` an instance of `Int` and get back a string with the ordinalized number:
+
+```kotlin
+val num = 1
+num.ordinalize() => "1st"
+num = 100
+num.ordinalize() => "100th"
+```
+
+### Extension method Ordinalize for String objects
+
+You can `Ordinalize` an instance of `String` and get back a string with the ordinalized number:
+
+```kotlin
+val num = "1"
+num.ordinalize() => "1st"
+num = "100
+num.ordinalize() => "100th"
+```
