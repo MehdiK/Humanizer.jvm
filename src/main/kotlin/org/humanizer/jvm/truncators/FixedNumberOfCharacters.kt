@@ -23,7 +23,7 @@ public class FixedNumberOfCharactersTruncator
             }
             return "${t}${adjustedTruncationString}"
         }
-        if(truncateFrom == TruncateFrom.Left) {
+        else {
             var t = ""
             var l2 = 0
             value.reverse().forEach {
@@ -34,7 +34,6 @@ public class FixedNumberOfCharactersTruncator
             }
             return "${adjustedTruncationString}${t.reverse()}"
         }
-        return value
     }
 }
 

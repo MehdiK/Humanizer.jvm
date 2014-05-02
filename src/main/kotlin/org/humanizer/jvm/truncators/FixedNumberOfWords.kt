@@ -14,7 +14,7 @@ public class FixedNumberOfWordsTruncator {
             }
             return "${t}${truncationString}"
         }
-        if(truncateFrom == TruncateFrom.Left){
+        else {
             var t = ""
             var l2 = 0
             value.trimTrailing().reverse().forEach {
@@ -23,6 +23,5 @@ public class FixedNumberOfWordsTruncator {
             }
             return "${truncationString}${t.reverse()}"
         }
-        return value
     }
 }
