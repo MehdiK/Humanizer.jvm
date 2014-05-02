@@ -1,42 +1,38 @@
 package org.humanizer.jvm
 
+import org.humanizer.jvm.truncators.FixedLengthTruncator
+import org.humanizer.jvm.truncators.FixedNumberOfCharactersTruncator
+import org.humanizer.jvm.truncators.FixedNumberOfWordsTruncator
+
 fun String.truncate(length: Int) : String{
     return this.truncate(length, Truncator.FixedLength)
 }
 
-fun String.truncate(length: Int, truncator: Truncator) : String{
-    if(truncator == Truncator.FixedLength){
-        if(this.length > length) {
-            return "${this.substring(0, length - 1)}…"
-        }
-        return this
+fun String.truncate(length: Int, truncationString: String) : String {
+    return this.truncate(length, Truncator.FixedLength, truncationString)
+}
+
+fun String.truncate(length: Int, truncator: Truncator) : String {
+    return this.truncate(length, truncator, "…")
+}
+
+fun String.truncate(length: Int, truncator: Truncator, truncateFrom: TruncateFrom) : String {
+    return this.truncate(length, "…", truncator, truncateFrom)
+}
+
+fun String.truncate(length: Int, truncator: Truncator, truncationString: String) : String {
+    return this.truncate(length,truncationString,truncator, TruncateFrom.Right)
+}
+
+fun String.truncate(length: Int, truncationString: String, truncator: Truncator, truncateFrom: TruncateFrom) : String {
+   if(truncator == Truncator.FixedLength){
+        return FixedLengthTruncator().truncate(this,length,truncationString,truncateFrom)
     }
     if(truncator == Truncator.FixedNumberOfCharacters) {
-        var l = 0
-        for (c in this)
-            if (Character.isLetterOrDigit(c)) l++
-        if(length < l) {
-            var t = ""
-            var l2 = 0
-            for (c in this) {
-                if (Character.isLetterOrDigit(c)) l2++
-                if(length > l2){ t = t+c}
-            }
-            return "${t}…"
-        }
-        return this
+        return FixedNumberOfCharactersTruncator().truncate(this,length,truncationString,truncateFrom)
     }
     if(truncator == Truncator.FixedNumberOfWords){
-        if(length < this.split("\\s+").count()) {
-            var t = ""
-            var l2 = 0
-            for (c in this) {
-                if (Character.isWhitespace(c)) l2++
-                if(length > l2){ t = t+c}
-            }
-            return "${t}…"
-        }
-        return this
+        return FixedNumberOfWordsTruncator().truncate(this,length,truncationString,truncateFrom)
     }
     return this
 }
@@ -45,4 +41,9 @@ enum class Truncator {
     FixedLength
     FixedNumberOfCharacters
     FixedNumberOfWords
+}
+
+enum class TruncateFrom {
+    Left
+    Right
 }
