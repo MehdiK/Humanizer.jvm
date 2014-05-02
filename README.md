@@ -121,3 +121,25 @@ num.truncate(10, Truncator.FixedNumberOfWords) => "a"
 t = "Text with more words than truncate length"
 num.truncate(4, Truncator.FixedNumberOfWords) => "Text with more words…"
 ```
+
+### Extension method truncate for String objects with TruncatorString option
+
+You can `Truncate` an instance of `String` and get back a string truncated with a custom string at the end if needed:
+
+```kotlin
+val t = "a"
+num.truncate(10, "...") => "a"
+t = "Text with more words than truncate length"
+num.truncate(10, "...") => "Text wi..."
+```
+
+### Extension method truncate for String objects with TruncatorString option
+
+You can `Truncate` an instance of `String` and get back a string truncated from the left:
+
+```kotlin
+val t = "a"
+num.truncate(10, TruncateFrom.Left) => "a"
+t = "Text with more words than truncate length"
+num.truncate(10, TruncateFrom.Left) => "…te length"
+```

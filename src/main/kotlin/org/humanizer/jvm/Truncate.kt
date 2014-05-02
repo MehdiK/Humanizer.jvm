@@ -16,6 +16,10 @@ fun String.truncate(length: Int, truncator: Truncator) : String {
     return this.truncate(length, truncator, "…")
 }
 
+fun String.truncate(length: Int, truncateFrom: TruncateFrom) : String {
+    return this.truncate(length, "…", Truncator.FixedLength,truncateFrom)
+}
+
 fun String.truncate(length: Int, truncator: Truncator, truncateFrom: TruncateFrom) : String {
     return this.truncate(length, "…", truncator, truncateFrom)
 }
