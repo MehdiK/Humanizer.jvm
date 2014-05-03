@@ -11,6 +11,7 @@ The current build status on the CI server is <a href="http://teamcity.ginnivan.n
    - [Humanize date](#humanize-date)
    - [Ordinalize](#ordinalize)
    - [Truncate] (#truncate)
+   - [Inflector] (#inflector)
 
 # <a id="features">Features</a>
 
@@ -145,3 +146,55 @@ num.truncate(10, truncateFrom = TruncateFrom.Left) => "…te length"
 ```
 
 Or you can use a combination of the above parameters length, truncationString, truncator, truncateFrom.
+
+## <a id="inflector">Inflector</a>
+
+### Extension method camelize for String objects
+
+Replaces underscores with hyphens in as String
+
+Decapitalizes first word and removes underscores while capitalizing the next letter in a String
+
+```kotlin
+"customer_first_name".pascalize() => "customerFirstName"
+```
+
+### Extension method pascalize for String objects
+
+Capitalizes first word and removes underscores while capitalizing the next letter in a String
+
+```kotlin
+"customer_first_name".pascalize() => "CustomerFirstName"
+```
+
+### Extension method underscore for String objects
+
+Replaces spaces with underscores and makes everything lowercase or looks for capitalized words and replaces them with underscore and lowercase in a String
+
+```kotlin
+"SomeTitleThatWillBeUnderscored".underscore() => "some_title_that_will_be_underscored"
+```
+
+### Extension method titleize for String objects
+
+Replaces underscores and dashes with spaces and capitalizes each word in a String
+
+```kotlin
+"some-title: The begining".titleize() => "Some Title: The Begining"
+```
+
+### Extension method dasherize for String objects
+
+Replaces underscores with dashes in a String.
+
+```kotlin
+"some_title".dasherize() => "some-title"
+```
+
+### Extension method hyphenate for String objects
+
+Replaces underscores with hyphens in a String.
+
+```kotlin
+"some_title".hyphenate() => "some-title"
+```
