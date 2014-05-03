@@ -41,7 +41,7 @@ public class TruncateTests(): Spek() {
 
         givenData(data) {
             on("calling truncate with length ${it.length} and TruncateFrom.Left", {
-                val actual = it.value.truncate(it.length, TruncateFrom.Left)
+                val actual = it.value.truncate(it.length, truncateFrom = TruncateFrom.Left)
                 it("should be ${it.expected}", {
                     shouldEqual(it.expected, actual)
                 })
@@ -57,7 +57,7 @@ public class TruncateTests(): Spek() {
 
         givenData(data) {
             on("calling truncate with length ${it.length} and FixedLength", {
-                val actual = it.value.truncate(it.length, Truncator.FixedLength)
+                val actual = it.value.truncate(it.length, truncator = Truncator.FixedLength)
                 it("should be ${it.expected}", {
                     shouldEqual(it.expected, actual)
                 })
@@ -74,7 +74,7 @@ public class TruncateTests(): Spek() {
 
         givenData(data) {
             on("calling truncate with length ${it.length} and FixedNumberOfCharacters", {
-                val actual = it.value.truncate(it.length, Truncator.FixedNumberOfCharacters)
+                val actual = it.value.truncate(it.length, truncator = Truncator.FixedNumberOfCharacters)
                 it("should be ${it.expected}", {
                     shouldEqual(it.expected, actual)
                 })
@@ -92,7 +92,7 @@ public class TruncateTests(): Spek() {
 
         givenData(data) {
             on("calling truncate with length ${it.length} and FixedNumberOfWords", {
-                val actual = it.value.truncate(it.length, Truncator.FixedNumberOfWords)
+                val actual = it.value.truncate(it.length, truncator = Truncator.FixedNumberOfWords)
                 it("should be ${it.expected}", {
                     shouldEqual(it.expected, actual)
                 })
@@ -130,7 +130,7 @@ public class TruncateTests(): Spek() {
         )
         givenData(data) {
             on("calling truncate with length ${it.length} and truncationString ${it.truncationString} for FixedLength", {
-                val actual = it.value.truncate(it.length,Truncator.FixedLength, it.truncationString)
+                val actual = it.value.truncate(it.length, truncator = Truncator.FixedLength, truncationString = it.truncationString)
                 it("should be ${it.expected}", {
                     shouldEqual(it.expected, actual)
                 })
@@ -149,7 +149,7 @@ public class TruncateTests(): Spek() {
 
         givenData(data) {
                     on("calling truncate with length ${it.length} and truncationString ${it.truncationString} for FixedNumberOfCharacters", {
-                        val actual = it.value.truncate(it.length, Truncator.FixedNumberOfCharacters, it.truncationString)
+                        val actual = it.value.truncate(it.length, truncator = Truncator.FixedNumberOfCharacters, truncationString = it.truncationString)
                         it("should be ${it.expected}", {
                             shouldEqual(it.expected, actual)
                         })
@@ -168,7 +168,7 @@ public class TruncateTests(): Spek() {
 
         givenData(data) {
             on("calling truncate with length ${it.length} and truncationString ${it.truncationString} for FixedNumberOfWords", {
-                val actual = it.value.truncate(it.length, Truncator.FixedNumberOfWords, it.truncationString)
+                val actual = it.value.truncate(it.length, truncator = Truncator.FixedNumberOfWords, truncationString = it.truncationString)
                 it("should be ${it.expected}", {
                     shouldEqual(it.expected, actual)
                 })
@@ -184,7 +184,7 @@ public class TruncateTests(): Spek() {
 
         givenData(data) {
             on("calling truncate with length ${it.length} and FixedLength and Truncate from Left", {
-                val actual = it.value.truncate(it.length, Truncator.FixedLength, TruncateFrom.Left)
+                val actual = it.value.truncate(it.length, truncator = Truncator.FixedLength, truncateFrom = TruncateFrom.Left)
                 it("should be ${it.expected}", {
                     shouldEqual(it.expected, actual)
                 })
@@ -201,7 +201,7 @@ public class TruncateTests(): Spek() {
 
         givenData(data) {
             on("calling truncate with length ${it.length} and FixedNumberOfCharacters and Truncate from Left", {
-                val actual = it.value.truncate(it.length, Truncator.FixedNumberOfCharacters, TruncateFrom.Left)
+                val actual = it.value.truncate(it.length, truncator = Truncator.FixedNumberOfCharacters, truncateFrom = TruncateFrom.Left)
                 it("should be ${it.expected}", {
                     shouldEqual(it.expected, actual)
                 })
@@ -219,7 +219,7 @@ public class TruncateTests(): Spek() {
 
         givenData(data) {
             on("calling truncate with length ${it.length} and FixedNumberOfWords and Truncate from Left", {
-                val actual = it.value.truncate(it.length, Truncator.FixedNumberOfWords, TruncateFrom.Left)
+                val actual = it.value.truncate(it.length, truncator = Truncator.FixedNumberOfWords, truncateFrom = TruncateFrom.Left)
                 it("should be ${it.expected}", {
                     shouldEqual(it.expected, actual)
                 })

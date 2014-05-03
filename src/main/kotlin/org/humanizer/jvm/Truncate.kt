@@ -4,31 +4,8 @@ import org.humanizer.jvm.truncators.FixedLengthTruncator
 import org.humanizer.jvm.truncators.FixedNumberOfCharactersTruncator
 import org.humanizer.jvm.truncators.FixedNumberOfWordsTruncator
 
-fun String.truncate(length: Int) : String{
-    return this.truncate(length, Truncator.FixedLength)
-}
 
-fun String.truncate(length: Int, truncationString: String) : String {
-    return this.truncate(length, Truncator.FixedLength, truncationString)
-}
-
-fun String.truncate(length: Int, truncator: Truncator) : String {
-    return this.truncate(length, truncator, "…")
-}
-
-fun String.truncate(length: Int, truncateFrom: TruncateFrom) : String {
-    return this.truncate(length, "…", Truncator.FixedLength,truncateFrom)
-}
-
-fun String.truncate(length: Int, truncator: Truncator, truncateFrom: TruncateFrom) : String {
-    return this.truncate(length, "…", truncator, truncateFrom)
-}
-
-fun String.truncate(length: Int, truncator: Truncator, truncationString: String) : String {
-    return this.truncate(length,truncationString,truncator, TruncateFrom.Right)
-}
-
-fun String.truncate(length: Int, truncationString: String, truncator: Truncator, truncateFrom: TruncateFrom) : String {
+fun String.truncate(length: Int, truncationString: String = "…", truncator: Truncator = Truncator.FixedLength, truncateFrom: TruncateFrom = TruncateFrom.Right) : String {
    if(truncator == Truncator.FixedLength){
         return FixedLengthTruncator().truncate(this,length,truncationString,truncateFrom)
     }
