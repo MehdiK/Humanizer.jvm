@@ -99,27 +99,27 @@ Truncator Enum
 
 ```kotlin
 val t = "a"
-num.truncate(10, Truncator.FixedLength) => "a"
+num.truncate(10, truncator = Truncator.FixedLength) => "a"
 t = "longer text then the length"
-num.truncate(4, Truncator.FixedLength) => "long…"
+num.truncate(4, truncator = Truncator.FixedLength) => "long…"
 ```
 
 #### FixedNumberOfCharacters
 
 ```kotlin
 val t = "a"
-num.truncate(10, Truncator.FixedNumberOfCharacters) => "a"
+num.truncate(10, truncator = Truncator.FixedNumberOfCharacters) => "a"
 t = "Text with more characters than truncate length"
-num.truncate(10, Truncator.FixedNumberOfCharacters) => "Text with m…"
+num.truncate(10, truncator = Truncator.FixedNumberOfCharacters) => "Text with m…"
 ```
 
 #### FixedNumberOfWords
 
 ```kotlin
 val t = "a"
-num.truncate(10, Truncator.FixedNumberOfWords) => "a"
+num.truncate(10, truncator = Truncator.FixedNumberOfWords) => "a"
 t = "Text with more words than truncate length"
-num.truncate(4, Truncator.FixedNumberOfWords) => "Text with more words…"
+num.truncate(4, truncator = Truncator.FixedNumberOfWords) => "Text with more words…"
 ```
 
 ### Extension method truncate for String objects with TruncatorString option
@@ -128,9 +128,9 @@ You can `Truncate` an instance of `String` and get back a string truncated with 
 
 ```kotlin
 val t = "a"
-num.truncate(10, "...") => "a"
+num.truncate(10, truncationString = "...") => "a"
 t = "Text with more words than truncate length"
-num.truncate(10, "...") => "Text wi..."
+num.truncate(10, truncationsString = "...") => "Text wi..."
 ```
 
 ### Extension method truncate for String objects with TruncatorString option
@@ -139,7 +139,9 @@ You can `Truncate` an instance of `String` and get back a string truncated from 
 
 ```kotlin
 val t = "a"
-num.truncate(10, TruncateFrom.Left) => "a"
+num.truncate(10, truncateFrom = TruncateFrom.Left) => "a"
 t = "Text with more words than truncate length"
-num.truncate(10, TruncateFrom.Left) => "…te length"
+num.truncate(10, truncateFrom = TruncateFrom.Left) => "…te length"
 ```
+
+Or you can use a combination of the above parameters length, truncationString, truncator, truncateFrom.
