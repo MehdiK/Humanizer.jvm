@@ -13,7 +13,14 @@ public class TruncateTests(): Spek() {
     data class ParamClass(val value: String
                           , val length: Int
                           , val expected: String
-                          , val truncationString: String = "…") {    }
+                          , val truncationString: String = "…") {
+        override fun toString(): String {
+            return "\"$value\" and truncation string $truncationString"
+        }
+
+
+
+    }
     {
 
         var data = listOf(
@@ -26,7 +33,7 @@ public class TruncateTests(): Spek() {
         givenData(data) {
             on("calling truncate with length ${it.length}", {
                 val actual = it.value.truncate(it.length)
-                it("should be ${it.expected}", {
+                it("should be \"${it.expected}\"", {
                     shouldEqual(it.expected, actual)
                 })
             })

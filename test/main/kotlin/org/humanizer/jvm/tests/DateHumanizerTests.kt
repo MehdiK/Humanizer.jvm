@@ -12,10 +12,15 @@ import java.util.GregorianCalendar
 
 public class DateHumanizerTests(): Spek() {
 
+    // TODO: Output of tests isn't clear. What it timeunit?
     data class ParamClass(val timeUnit: Int
                      ,val input: Int
                      ,val expected: String
-                     ,val dateToUse: Date = GregorianCalendar(2014,Calendar.JANUARY, 5).getTime()){}
+                     ,val dateToUse: Date = GregorianCalendar(2014,Calendar.JANUARY, 5).getTime()){
+        override fun toString(): String {
+            return "a date and $input"
+        }
+    }
     {
 
         val data = listOf(
