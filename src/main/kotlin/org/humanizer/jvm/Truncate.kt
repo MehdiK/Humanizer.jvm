@@ -1,21 +1,18 @@
 package org.humanizer.jvm
 
-import org.humanizer.jvm.truncators.FixedLengthTruncator
-import org.humanizer.jvm.truncators.FixedNumberOfCharactersTruncator
-import org.humanizer.jvm.truncators.FixedNumberOfWordsTruncator
+import org.humanizer.jvm.truncators.truncateFixedLength
+import org.humanizer.jvm.truncators.truncateFixedNumberOfCharacters
+import org.humanizer.jvm.truncators.truncateFixedNumberOfWords
+import org.humanizer.jvm.truncators.UnsupportedTruncatorException
 
 
 fun String.truncate(length: Int, truncationString: String = "…", truncator: Truncator = Truncator.FixedLength, truncateFrom: TruncateFrom = TruncateFrom.Right) : String {
-   if(truncator == Truncator.FixedLength){
-        return FixedLengthTruncator().truncate(this,length,truncationString,truncateFrom)
+    when (truncator) {
+        Truncator.FixedLength -> return truncateFixedLength(this,length,truncationString,truncateFrom)
+        Truncator.FixedNumberOfCharacters -> return truncateFixedNumberOfCharacters(this,length,truncationString,truncateFrom)
+        Truncator.FixedNumberOfWords -> return truncateFixedNumberOfWords(this,length,truncationString,truncateFrom)
+        else -> throw UnsupportedTruncatorException()
     }
-    if(truncator == Truncator.FixedNumberOfCharacters) {
-        return FixedNumberOfCharactersTruncator().truncate(this,length,truncationString,truncateFrom)
-    }
-    if(truncator == Truncator.FixedNumberOfWords){
-        return FixedNumberOfWordsTruncator().truncate(this,length,truncationString,truncateFrom)
-    }
-    return this
 }
 
 enum class Truncator {
