@@ -11,6 +11,7 @@ The current build status on the CI server is <a href="http://teamcity.ginnivan.n
    - [Humanize date](#humanize-date)
    - [Ordinalize](#ordinalize)
    - [Truncate] (#truncate)
+   - [Inflector] (#inflector)
 
 # <a id="features">Features</a>
 
@@ -99,27 +100,27 @@ Truncator Enum
 
 ```kotlin
 val t = "a"
-num.truncate(10, Truncator.FixedLength) => "a"
+num.truncate(10, truncator = Truncator.FixedLength) => "a"
 t = "longer text then the length"
-num.truncate(4, Truncator.FixedLength) => "long…"
+num.truncate(4, truncator = Truncator.FixedLength) => "long…"
 ```
 
 #### FixedNumberOfCharacters
 
 ```kotlin
 val t = "a"
-num.truncate(10, Truncator.FixedNumberOfCharacters) => "a"
+num.truncate(10, truncator = Truncator.FixedNumberOfCharacters) => "a"
 t = "Text with more characters than truncate length"
-num.truncate(10, Truncator.FixedNumberOfCharacters) => "Text with m…"
+num.truncate(10, truncator = Truncator.FixedNumberOfCharacters) => "Text with m…"
 ```
 
 #### FixedNumberOfWords
 
 ```kotlin
 val t = "a"
-num.truncate(10, Truncator.FixedNumberOfWords) => "a"
+num.truncate(10, truncator = Truncator.FixedNumberOfWords) => "a"
 t = "Text with more words than truncate length"
-num.truncate(4, Truncator.FixedNumberOfWords) => "Text with more words…"
+num.truncate(4, truncator = Truncator.FixedNumberOfWords) => "Text with more words…"
 ```
 
 ### Extension method truncate for String objects with TruncatorString option
@@ -128,9 +129,9 @@ You can `Truncate` an instance of `String` and get back a string truncated with 
 
 ```kotlin
 val t = "a"
-num.truncate(10, "...") => "a"
+num.truncate(10, truncationString = "...") => "a"
 t = "Text with more words than truncate length"
-num.truncate(10, "...") => "Text wi..."
+num.truncate(10, truncationsString = "...") => "Text wi..."
 ```
 
 ### Extension method truncate for String objects with TruncatorString option
@@ -139,7 +140,61 @@ You can `Truncate` an instance of `String` and get back a string truncated from 
 
 ```kotlin
 val t = "a"
-num.truncate(10, TruncateFrom.Left) => "a"
+num.truncate(10, truncateFrom = TruncateFrom.Left) => "a"
 t = "Text with more words than truncate length"
-num.truncate(10, TruncateFrom.Left) => "…te length"
+num.truncate(10, truncateFrom = TruncateFrom.Left) => "…te length"
+```
+
+Or you can use a combination of the above parameters length, truncationString, truncator, truncateFrom.
+
+## <a id="inflector">Inflector</a>
+
+### Extension method camelize for String objects
+
+Replaces underscores with hyphens in as String
+
+Decapitalizes first word and removes underscores while capitalizing the next letter in a String
+
+```kotlin
+"customer_first_name".pascalize() => "customerFirstName"
+```
+
+### Extension method pascalize for String objects
+
+Capitalizes first word and removes underscores while capitalizing the next letter in a String
+
+```kotlin
+"customer_first_name".pascalize() => "CustomerFirstName"
+```
+
+### Extension method underscore for String objects
+
+Replaces spaces with underscores and makes everything lowercase or looks for capitalized words and replaces them with underscore and lowercase in a String
+
+```kotlin
+"SomeTitleThatWillBeUnderscored".underscore() => "some_title_that_will_be_underscored"
+```
+
+### Extension method titleize for String objects
+
+Replaces underscores and dashes with spaces and capitalizes each word in a String
+
+```kotlin
+"some-title: The begining".titleize() => "Some Title: The Begining"
+```
+
+### Extension method dasherize for String objects
+
+Replaces underscores with dashes in a String.
+
+```kotlin
+"some_title".dasherize() => "some-title"
+```
+
+### Extension method hyphenate for String objects
+
+Replaces underscores with hyphens in a String.
+
+```kotlin
+"some_title".hyphenate() => "some-title"
 ```
