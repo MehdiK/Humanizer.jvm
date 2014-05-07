@@ -159,16 +159,13 @@ public class PluralizeTests() : Spek() {
 
         given("datalist should not contain doubles") {
             on("grouping by plural", {
-                val grouped = data.groupBy { it.component1() }
-                val counts = ArrayList<Pair<String, Int>>()
-                grouped.mapTo(counts,{
+                val doubles = data.groupBy { it.component1() }.map{
                     val key = it.key
                     val count = data.count{it.first == key}
                     Pair(key ,count)
-                } )
+                }.filter { it.second > 1 }.map { it.first}.makeString(",")
                 it("should be empty for all groups", {
-                    //if not it will show you which values are doubles, which is clever
-                    shouldEqual("", counts.filter { it.second > 1 }.map { it.first}.makeString(","))
+                    shouldEqual("", doubles)
                 })
             })
         }
