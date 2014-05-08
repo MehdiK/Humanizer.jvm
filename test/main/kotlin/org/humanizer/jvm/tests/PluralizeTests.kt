@@ -134,7 +134,114 @@ public class PluralizeTests() : Spek() {
                 "nucleus" to "nuclei",
                 "stimulus" to "stimuli",
                 "meniscus" to "menisci",
-                "thesaurus" to "thesauri"
+                "thesaurus" to "thesauri",
+
+                "criterion" to "criteria",
+                "perihelion"  to "perihelia",
+                "aphelion" to "aphelia",
+                "phenomenon" to "phenomena",
+                "prolegomenon" to "prolegomena",
+                "noumenon" to "noumena",
+                "organon" to "organa",
+                "asyndeton" to "asyndeta",
+                "hyperbaton" to "hyperbata",
+
+                "alumna" to "alumnae",
+                "alga" to "algae",
+                "vertebra" to "vertebrae",
+                "persona" to "personae",
+
+                "albino" to "albinos",
+                "archipelago" to "archipelagos",
+                "armadillo" to "armadillos",
+                "commando" to "commandos",
+                "crescendo" to "crescendos",
+                "fiasco" to "fiascos",
+                "ditto" to "dittos",
+                "dynamo" to "dynamos",
+                "embryo" to "embryos",
+                "ghetto" to "ghettos",
+                "guano" to "guanos",
+                "inferno" to "infernos",
+                "jumbo" to "jumbos",
+                "lumbago" to "lumbagos",
+                "magneto" to "magnetos",
+                "manifesto" to "manifestos",
+                "medico" to "medicos",
+                "octavo" to "octavos",
+                "pro" to "pros",
+                "quarto" to "quartos",
+                "canto" to "cantos",
+                "lingo" to "lingos",
+                "generalissimo" to "generalissimos",
+                "stylo" to "stylos",
+                "rhino" to "rhinos",
+                "casino" to "casinos",
+                "auto" to "autos",
+                "macro" to "macros",
+                "zero" to "zeros",
+
+                "solo" to "solos",
+                "soprano" to "sopranos",
+                "basso" to "bassos",
+                "alto" to "altos",
+                "contralto" to "contraltos",
+                "tempo" to "tempos",
+                "piano" to "pianos",
+                "virtuoso" to "virtuosos",
+
+                "stamen" to "stamina",
+                "foramen" to "foramina",
+                "lumen" to "lumina",
+
+                "anathema" to "anathemas",
+                "enema" to "enemas",
+                "oedema" to "oedemas",
+                "bema" to "bemas",
+                "enigma" to "enigmas",
+                "sarcoma" to "sarcomas",
+                "carcinoma" to "carcinomas",
+                "gumma" to "gummas",
+                "schema" to "schemas",
+                "charisma" to "charismas",
+                "lemma" to "lemmas",
+                "soma" to "somas",
+                "diploma" to "diplomas",
+                "lymphoma" to "lymphomas",
+                "stigma" to "stigmas",
+                "dogma" to "dogmas",
+                "magma" to "magmas",
+                "stoma" to "stomas",
+                "drama" to "dramas",
+                "melisma" to "melismas",
+                "trauma" to "traumas",
+                "edema" to "edemas",
+                "miasma" to "miasmas",
+
+                "afreet" to "afreeti",
+                "afrit" to "afriti",
+                "efreet" to "efreeti",
+
+                "cherub" to "cherubim",
+                "goy" to "goyim",
+                "seraph" to "seraphim",
+
+                "human" to "humans",
+                "Alabaman" to "Alabamans",
+                "Bahaman" to "Bahamans",
+                "Burman" to "Burmans",
+                "German" to "Germans",
+                "Hiroshiman" to "Hiroshimans",
+                "Liman" to "Limans",
+                "Nakayaman" to "Nakayamans",
+                "Oklahoman" to "Oklahomans",
+                "Panaman" to "Panamans",
+                "Selman" to "Selmans",
+                "Sonaman" to "Sonamans",
+                "Tacoman" to "Tacomans",
+                "Yakiman" to "Yakimans",
+                "Yokohaman" to "Yokohamans",
+                "Yuman" to "Yumans"
         )
 
         givenData(data) {
@@ -159,11 +266,11 @@ public class PluralizeTests() : Spek() {
 
         given("datalist should not contain doubles") {
             on("grouping by plural", {
-                val doubles = data.groupBy { it.component1() }.map{
+                val doubles = data.groupBy { it.component1() }.map {
                     val key = it.key
-                    val count = data.count{it.first == key}
-                    Pair(key ,count)
-                }.filter { it.second > 1 }.map { it.first}.makeString(",")
+                    val count = data.count { it.first == key }
+                    Pair(key, count)
+                }.filter { it.second > 1 }.map { it.first }.makeString(",")
                 it("should be empty for all groups", {
                     shouldEqual("", doubles)
                 })

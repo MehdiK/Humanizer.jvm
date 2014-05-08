@@ -198,3 +198,19 @@ Replaces underscores with hyphens in a String.
 ```kotlin
 "some_title".hyphenate() => "some-title"
 ```
+
+### Extension method pluralize for String objects
+
+Gives the plural of a certain word.
+
+```kotlin
+"test".pluralize() => "tests"
+```
+
+### Extension method singularize for String objects
+
+gives the singular of a certain word.
+
+```kotlin
+"tests".singularize() => "test"
+```

@@ -83,10 +83,10 @@ fun String.pluralize(): String {
     if (unCountable().contains(this)) return this
     val rule = pluralizeRules().last { Pattern.compile(it.component1(), Pattern.CASE_INSENSITIVE).matcher(this).find() }
     var found = Pattern.compile(rule.component1(), Pattern.CASE_INSENSITIVE).matcher(this).replaceAll(rule.component2())
-    val excep = exceptions().firstOrNull() { this.equals(it.component1()) }
-    if (excep != null) found = excep.component2()
     val endswith = exceptions().firstOrNull { this.endsWith(it.component1()) }
     if (endswith != null) found = this.replace(endswith.component1(), endswith.component2())
+    val excep = exceptions().firstOrNull() { this.equals(it.component1()) }
+    if (excep != null) found = excep.component2()
     return found
 }
 
@@ -96,9 +96,15 @@ fun String.singularize(): String {
     if (excep != null) return excep.component1()
     val endswith = exceptions().firstOrNull { this.endsWith(it.component2()) }
     if (endswith != null) return this.replace(endswith.component2(), endswith.component1())
-    val rule = singularizeRules().last { Pattern.compile(it.component1(), Pattern.CASE_INSENSITIVE).matcher(this).find() }
-    return Pattern.compile(rule.component1(), Pattern.CASE_INSENSITIVE).matcher(this).replaceAll(rule.component2())
+    try{
+        val rule = singularizeRules().last { Pattern.compile(it.component1(), Pattern.CASE_INSENSITIVE).matcher(this).find() }
+        return Pattern.compile(rule.component1(), Pattern.CASE_INSENSITIVE).matcher(this).replaceAll(rule.component2())}
+    catch(ex : IllegalArgumentException) {
+        NoRuleFoundException("singularize")
+    }
+    return this
 }
+
 fun unCountable(): List<String> {
     return listOf("equipment", "information", "rice", "money",
             "species", "series", "fish", "sheep", "aircraft", "bison", "flounder", "pliers", "bream",
@@ -125,7 +131,45 @@ fun exceptions(): List<Pair<String, String>> {
             "murex" to "murices",
             "silex" to "silices",
             "radix" to "radices",
-            "helix" to "helices")
+            "helix" to "helices",
+            "alumna" to "alumnae",
+            "alga" to "algae",
+            "vertebra" to "vertebrae",
+            "persona" to "personae",
+            "stamen" to "stamina",
+            "foramen" to "foramina",
+            "lumen" to "lumina",
+            "afreet" to "afreeti",
+            "afrit" to "afriti",
+            "efreet" to "efreeti",
+            "cherub" to "cherubim",
+            "goy" to "goyim",
+            "human" to "humans",
+            "lumen" to "lumina",
+            "seraph" to "seraphim",
+            "Alabaman" to "Alabamans",
+            "Bahaman" to "Bahamans",
+            "Burman" to "Burmans",
+            "German" to "Germans",
+            "Hiroshiman" to "Hiroshimans",
+            "Liman" to "Limans",
+            "Nakayaman" to "Nakayamans",
+            "Oklahoman" to "Oklahomans",
+            "Panaman" to "Panamans",
+            "Selman" to "Selmans",
+            "Sonaman" to "Sonamans",
+            "Tacoman" to "Tacomans",
+            "Yakiman" to "Yakimans",
+            "Yokohaman" to "Yokohamans",
+            "Yuman" to "Yumans","criterion" to "criteria",
+            "perihelion"  to "perihelia",
+            "aphelion" to "aphelia",
+            "phenomenon" to "phenomena",
+            "prolegomenon" to "prolegomena",
+            "noumenon" to "noumena",
+            "organon" to "organa",
+            "asyndeton" to "asyndeta",
+            "hyperbaton" to "hyperbata")
 }
 
 fun pluralizeRules(): List<Pair<String, String>> {
@@ -153,7 +197,8 @@ fun pluralizeRules(): List<Pair<String, String>> {
             "(quiz)$" to "$1zes",
             "f$" to "ves",
             "fe$" to "ves",
-            "um$" to "a")
+            "um$" to "a",
+            "on$" to "a")
 }
 
 fun singularizeRules(): List<Pair<String, String>> {
@@ -188,5 +233,6 @@ fun singularizeRules(): List<Pair<String, String>> {
             "(matr)ices$" to "$1ix",
             "(quiz)zes$" to "$1",
             "a$" to "um",
-            "i$" to "us")
+            "i$" to "us",
+            "ae$" to "a")
 }
