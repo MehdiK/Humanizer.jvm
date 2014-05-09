@@ -12,6 +12,8 @@ The current build status on the CI server is <a href="http://teamcity.ginnivan.n
    - [Ordinalize](#ordinalize)
    - [Truncate] (#truncate)
    - [Inflector] (#inflector)
+   - [Number to words] (#numbertowords)
+   - [To quantity] (#toquantity)
 
 # <a id="features">Features</a>
 
@@ -205,6 +207,9 @@ Gives the plural of a certain word.
 
 ```kotlin
 "test".pluralize() => "tests"
+
+"test".pluralize(Plurality.CouldBeEither) => "tests"
+"tests".pluralize(Plurality.CouldBeEither) => "tests"
 ```
 
 ### Extension method singularize for String objects
@@ -213,4 +218,46 @@ gives the singular of a certain word.
 
 ```kotlin
 "tests".singularize() => "test"
+
+"test".singularize(Plurality.CouldBeEither) => "test"
+"tests".singularize(Plurality.CouldBeEither) => "test"
+```
+
+## <a id="numbertowords">Number to words</a>
+
+### Extension method toWords for String objects
+
+Gives the value in words.
+
+```kotlin
+1.toWords() => "one"
+10.toWords() => "ten"
+```
+
+### Extension method toOrdinalWords for String objects
+
+Gives the value in ordinal words.
+
+```kotlin
+1.toOrdinalWords() => "first"
+10.toOrdinalWords() => "tenth"
+```
+
+## <a id="toquantity">To quantity</a>
+
+### Extension method toQuantity for String objects
+
+```kotlin
+"case".toQuantity(1) => "1 case"
+"cases".toQuantity(1) => "1 case"
+"case".toQuantity(10) => "10 cases"
+
+"cases".toQuantity(1, showAsQuantity = ShowQuantityAs.None) => "case"
+"cases".toQuantity(2, showAsQuantity = ShowQuantityAs.None) => "cases"
+
+"cases".toQuantity(1, showAsQuantity = ShowQuantityAs.Numeric) => "1 case"
+"cases".toQuantity(2, showAsQuantity = ShowQuantityAs.Numeric) => "1 case"
+
+"cases".toQuantity(1, showAsQuantity = ShowQuantityAs.Words) => "one case"
+"cases".toQuantity(2, showAsQuantity = ShowQuantityAs.Words) => "two cases"
 ```

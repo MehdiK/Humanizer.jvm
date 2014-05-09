@@ -51,14 +51,14 @@ fun Int.toWords(): String {
 }
 
 fun Int.toOrdinalWords(): String {
-    var towords = ""
+    var towords: String
     // 9 => ninth
     if (exceptionNumbersToWords(this) != "")
         return exceptionNumbersToWords(this);
 
     // 21 => twenty first
     if (this > 20) {
-        var exceptionPart = ""
+        var exceptionPart : String
         if (exceptionNumbersToWords(this % 10) != "") {
             exceptionPart = exceptionNumbersToWords(this % 10)
             var normalPart = this - this % 10
