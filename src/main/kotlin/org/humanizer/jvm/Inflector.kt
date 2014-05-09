@@ -79,7 +79,31 @@ http://www.java2s.com/Tutorial/Java/0040__Data-Type/Transformswordstosingularplu
 https://github.com/rails/rails/blob/26698fb91d88dca0f860adcb80528d8d3f0f6285/activesupport/lib/active_support/inflector/inflections.rb
 
  */
-fun String.pluralize(): String {
+fun String.pluralize(plurality: Plurality = Plurality.Singular): String {
+    if(plurality== Plurality.Plural) return  this
+
+    if(plurality == Plurality.Singular)
+        return this.pluralizer()
+
+    if (this.singularizer() != this && this.singularizer() + "s" != this && this.singularizer().pluralizer() == this && this.pluralizer() != this)
+        return this
+
+    return this.pluralizer()
+}
+
+fun String.singularize(plurality: Plurality = Plurality.Plural): String {
+
+    if(plurality== Plurality.Singular) return  this
+
+    if(plurality == Plurality.Plural) return this.singularizer()
+
+    if (this.pluralizer() != this && this+"s" != this.pluralizer() && this.pluralizer().singularize() == this && this.singularizer() != this)
+        return this;
+
+    return this.singularize()
+}
+
+private fun String.pluralizer() : String{
     if (unCountable().contains(this)) return this
     val rule = pluralizeRules().last { Pattern.compile(it.component1(), Pattern.CASE_INSENSITIVE).matcher(this).find() }
     var found = Pattern.compile(rule.component1(), Pattern.CASE_INSENSITIVE).matcher(this).replaceAll(rule.component2())
@@ -90,7 +114,7 @@ fun String.pluralize(): String {
     return found
 }
 
-fun String.singularize(): String {
+private fun String.singularizer() : String {
     if (unCountable().contains(this)) return this
     val excep = exceptions().firstOrNull() { this.equals(it.component2()) }
     if (excep != null) return excep.component1()
@@ -104,6 +128,7 @@ fun String.singularize(): String {
     }
     return this
 }
+
 
 fun unCountable(): List<String> {
     return listOf("equipment", "information", "rice", "money",
@@ -235,4 +260,10 @@ fun singularizeRules(): List<Pair<String, String>> {
             "a$" to "um",
             "i$" to "us",
             "ae$" to "a")
+}
+
+enum class Plurality {
+    Singular
+    Plural
+    CouldBeEither
 }
