@@ -12,8 +12,6 @@ The current build status on the CI server is <a href="http://teamcity.ginnivan.n
    - [Ordinalize](#ordinalize)
    - [Truncate] (#truncate)
    - [Inflector] (#inflector)
-   - [Number to words] (#numbertowords)
-   - [To quantity] (#toquantity)
 
 # <a id="features">Features</a>
 
@@ -60,7 +58,7 @@ cal.getTime().Humanize() => "2 hours from now"
 You can `Ordinalize` an instance of `Int` and get back a string with the ordinalized number:
 
 ```kotlin
-val num = 1
+var num = 1
 num.ordinalize() => "1st"
 num = 100
 num.ordinalize() => "100th"
@@ -71,9 +69,9 @@ num.ordinalize() => "100th"
 You can `Ordinalize` an instance of `String` and get back a string with the ordinalized number:
 
 ```kotlin
-val num = "1"
+var num = "1"
 num.ordinalize() => "1st"
-num = "100
+num = "100"
 num.ordinalize() => "100th"
 ```
 
@@ -84,10 +82,10 @@ num.ordinalize() => "100th"
 You can `Truncate` an instance of `String` and get back a string truncated with … at the end if needed:
 
 ```kotlin
-val t = "a"
-num.truncate(10) => "a"
+var t = "a"
+t.truncate(10) => "a"
 t = "longer text then the length"
-num.truncate(4) => "long…"
+t.truncate(4) => "long…"
 ```
 
 ### Extension method truncate for String objects with Truncator option
@@ -101,28 +99,28 @@ Truncator Enum
 #### FixedLength
 
 ```kotlin
-val t = "a"
-num.truncate(10, truncator = Truncator.FixedLength) => "a"
+var t = "a"
+t.truncate(10, truncator = Truncator.FixedLength) => "a"
 t = "longer text then the length"
-num.truncate(4, truncator = Truncator.FixedLength) => "long…"
+t.truncate(4, truncator = Truncator.FixedLength) => "long…"
 ```
 
 #### FixedNumberOfCharacters
 
 ```kotlin
-val t = "a"
-num.truncate(10, truncator = Truncator.FixedNumberOfCharacters) => "a"
+var t = "a"
+t.truncate(10, truncator = Truncator.FixedNumberOfCharacters) => "a"
 t = "Text with more characters than truncate length"
-num.truncate(10, truncator = Truncator.FixedNumberOfCharacters) => "Text with m…"
+t.truncate(10, truncator = Truncator.FixedNumberOfCharacters) => "Text with m…"
 ```
 
 #### FixedNumberOfWords
 
 ```kotlin
-val t = "a"
-num.truncate(10, truncator = Truncator.FixedNumberOfWords) => "a"
+var t = "a"
+t.truncate(10, truncator = Truncator.FixedNumberOfWords) => "a"
 t = "Text with more words than truncate length"
-num.truncate(4, truncator = Truncator.FixedNumberOfWords) => "Text with more words…"
+t.truncate(4, truncator = Truncator.FixedNumberOfWords) => "Text with more words…"
 ```
 
 ### Extension method truncate for String objects with TruncatorString option
@@ -130,10 +128,10 @@ num.truncate(4, truncator = Truncator.FixedNumberOfWords) => "Text with more wor
 You can `Truncate` an instance of `String` and get back a string truncated with a custom string at the end if needed:
 
 ```kotlin
-val t = "a"
-num.truncate(10, truncationString = "...") => "a"
+var t = "a"
+t.truncate(10, truncationString = "...") => "a"
 t = "Text with more words than truncate length"
-num.truncate(10, truncationsString = "...") => "Text wi..."
+t.truncate(10, truncationsString = "...") => "Text wi..."
 ```
 
 ### Extension method truncate for String objects with TruncatorString option
@@ -141,10 +139,10 @@ num.truncate(10, truncationsString = "...") => "Text wi..."
 You can `Truncate` an instance of `String` and get back a string truncated from the left:
 
 ```kotlin
-val t = "a"
-num.truncate(10, truncateFrom = TruncateFrom.Left) => "a"
+var t = "a"
+t.truncate(10, truncateFrom = TruncateFrom.Left) => "a"
 t = "Text with more words than truncate length"
-num.truncate(10, truncateFrom = TruncateFrom.Left) => "…te length"
+t.truncate(10, truncateFrom = TruncateFrom.Left) => "…te length"
 ```
 
 Or you can use a combination of the above parameters length, truncationString, truncator, truncateFrom.
@@ -207,9 +205,6 @@ Gives the plural of a certain word.
 
 ```kotlin
 "test".pluralize() => "tests"
-
-"test".pluralize(Plurality.CouldBeEither) => "tests"
-"tests".pluralize(Plurality.CouldBeEither) => "tests"
 ```
 
 ### Extension method singularize for String objects
@@ -218,46 +213,4 @@ gives the singular of a certain word.
 
 ```kotlin
 "tests".singularize() => "test"
-
-"test".singularize(Plurality.CouldBeEither) => "test"
-"tests".singularize(Plurality.CouldBeEither) => "test"
-```
-
-## <a id="numbertowords">Number to words</a>
-
-### Extension method toWords for String objects
-
-Gives the value in words.
-
-```kotlin
-1.toWords() => "one"
-10.toWords() => "ten"
-```
-
-### Extension method toOrdinalWords for String objects
-
-Gives the value in ordinal words.
-
-```kotlin
-1.toOrdinalWords() => "first"
-10.toOrdinalWords() => "tenth"
-```
-
-## <a id="toquantity">To quantity</a>
-
-### Extension method toQuantity for String objects
-
-```kotlin
-"case".toQuantity(1) => "1 case"
-"cases".toQuantity(1) => "1 case"
-"case".toQuantity(10) => "10 cases"
-
-"cases".toQuantity(1, showAsQuantity = ShowQuantityAs.None) => "case"
-"cases".toQuantity(2, showAsQuantity = ShowQuantityAs.None) => "cases"
-
-"cases".toQuantity(1, showAsQuantity = ShowQuantityAs.Numeric) => "1 case"
-"cases".toQuantity(2, showAsQuantity = ShowQuantityAs.Numeric) => "1 case"
-
-"cases".toQuantity(1, showAsQuantity = ShowQuantityAs.Words) => "one case"
-"cases".toQuantity(2, showAsQuantity = ShowQuantityAs.Words) => "two cases"
 ```
