@@ -69,11 +69,11 @@ fun String.titleize() : String{
     return t
 }
 
-fun String.dasherize() : String{
+fun String.dasherize() : String {
     return this.replace("_", "-")
 }
 
-fun String.hyphenate() : String{
+fun String.hyphenate() : String {
     return this.replace("_", "-")
 }
 

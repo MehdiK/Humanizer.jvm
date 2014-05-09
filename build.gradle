@@ -41,3 +41,18 @@ buildscript {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
     }
 }
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '1.11'
+
+    doLast() {
+        def gradleOpts = "-XX:MaxPermSize=300m -Xmx1024m"
+        def gradlew_sh = file("gradlew")
+        def gradlew_bat = file("gradlew.bat")
+        gradlew_sh.text = gradlew_sh.text.replace("DEFAULT_JVM_OPTS=",
+                "GRADLE_OPTS=\"$gradleOpts \$GRADLE_OPTS\"\nDEFAULT_JVM_OPTS=")
+        gradlew_bat.text = gradlew_bat.text.replace("set DEFAULT_JVM_OPTS=",
+                "set GRADLE_OPTS=$gradleOpts %GRADLE_OPTS%\nset DEFAULT_JVM_OPTS=")
+
+    }
+}
