@@ -12,6 +12,9 @@ The current build status on the CI server is <a href="http://teamcity.ginnivan.n
    - [Ordinalize](#ordinalize)
    - [Truncate] (#truncate)
    - [Inflector] (#inflector)
+   - [Number to words] (#numbertowords)
+   - [To quantity] (#toquantity)
+   - [Humanize] (#humanize)
 
 # <a id="features">Features</a>
 
@@ -258,4 +261,24 @@ Gives the value in ordinal words.
 
 "cases".toQuantity(1, showAsQuantity = ShowQuantityAs.Words) => "one case"
 "cases".toQuantity(2, showAsQuantity = ShowQuantityAs.Words) => "two cases"
+```
+
+## <a id="humanize">Humanize</a>
+
+### Extension method humanize for String objects
+
+Turns pascalcased strings into sentences.
+
+```kotlin
+"PascalCaseInputStringIsTurnedIntoSentence".humanize() => "Pascal case input string is turned into sentence"
+"Underscored_input_String_is_turned_INTO_sentence".humanize() => "Underscored input String is turned INTO sentence"
+""HTMLIsTheLanguage".humanize() => "HTML is the language"
+
+"CanReturnTitleCase".humanize(LetterCasing.Title) => "Can Return Title Case"
+
+"CanReturnLowerCase".humanize(LetterCasing.LowerCase) => "can return lower case"
+
+"CanReturnSentenceCase".humanize(LetterCasing.Sentence) => "Can return sentence case"
+
+"CanHumanizeIntoUpperCase".humanize(LetterCasing.AllCaps) => "CAN HUMANIZE INTO UPPER CASE"
 ```
