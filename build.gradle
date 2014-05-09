@@ -1,3 +1,13 @@
+buildscript {
+    ext.kotlin_version = '0.7.270'
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+    }
+}
+
 apply plugin: 'java'
 apply plugin: 'kotlin'
 
@@ -26,18 +36,39 @@ sourceSets {
     main.java.srcDirs += 'src/main/kotlin'
 
 }
+
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.11'
     compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     compile "org.spek:spek:0.1.118"
 
 }
-buildscript {
-    ext.kotlin_version = '0.7.270'
-    repositories {
-        mavenCentral()
-    }
-    dependencies {
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+
+
+test {
+
+    // set heap size for the test JVM(s)
+    minHeapSize = "128m"
+    maxHeapSize = "512m"
+
+    // set JVM arguments for the test JVM(s)
+    jvmArgs '-XX:MaxPermSize=256m'
+
+    reports.junitXml.enabled = false
+    reports.html.enabled = false
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '1.11'
+
+    doLast() {
+        def gradleOpts = "-XX:MaxPermSize=300m -Xmx1024m"
+        def gradlew_sh = file("gradlew")
+        def gradlew_bat = file("gradlew.bat")
+        gradlew_sh.text = gradlew_sh.text.replace("DEFAULT_JVM_OPTS=",
+                "GRADLE_OPTS=\"$gradleOpts \$GRADLE_OPTS\"\nDEFAULT_JVM_OPTS=")
+        gradlew_bat.text = gradlew_bat.text.replace("set DEFAULT_JVM_OPTS=",
+                "set GRADLE_OPTS=$gradleOpts %GRADLE_OPTS%\nset DEFAULT_JVM_OPTS=")
+
     }
 }
