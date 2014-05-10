@@ -1,8 +1,5 @@
 package org.humanizer.jvm.truncators
 
-import org.humanizer.jvm.TruncateFrom
-
-
 fun truncateFixedLength(value: String, length: Int, truncationString: String, truncateFrom: TruncateFrom) : String
 {
     var adjustedLength = length - (truncationString.length - 1)
@@ -68,4 +65,15 @@ fun truncateFixedNumberOfWords(value: String, length: Int, truncationString: Str
         }
         return "${truncationString}${t.reverse()}"
     }
+}
+
+enum class Truncator {
+    FixedLength
+    FixedNumberOfCharacters
+    FixedNumberOfWords
+}
+
+enum class TruncateFrom {
+    Left
+    Right
 }

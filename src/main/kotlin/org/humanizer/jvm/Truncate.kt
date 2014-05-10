@@ -1,10 +1,6 @@
 package org.humanizer.jvm
 
-import org.humanizer.jvm.truncators.truncateFixedLength
-import org.humanizer.jvm.truncators.truncateFixedNumberOfCharacters
-import org.humanizer.jvm.truncators.truncateFixedNumberOfWords
-import org.humanizer.jvm.truncators.UnsupportedTruncatorException
-
+import org.humanizer.jvm.truncators.*
 
 fun String.truncate(length: Int, truncationString: String = "…", truncator: Truncator = Truncator.FixedLength, truncateFrom: TruncateFrom = TruncateFrom.Right) : String {
     when (truncator) {
@@ -13,15 +9,4 @@ fun String.truncate(length: Int, truncationString: String = "…", truncator: Tr
         Truncator.FixedNumberOfWords -> return truncateFixedNumberOfWords(this,length,truncationString,truncateFrom)
         else -> throw UnsupportedTruncatorException()
     }
-}
-
-enum class Truncator {
-    FixedLength
-    FixedNumberOfCharacters
-    FixedNumberOfWords
-}
-
-enum class TruncateFrom {
-    Left
-    Right
 }

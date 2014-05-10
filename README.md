@@ -15,6 +15,8 @@ The current build status on the CI server is <a href="http://teamcity.jetbrains.
    - [Number to words] (#numbertowords)
    - [To quantity] (#toquantity)
    - [Humanize] (#humanize)
+   - [DeHumanize] (#dehumanize)
+   - [Roman numerals] (#romannumerals)
 
 # <a id="features">Features</a>
 
@@ -263,6 +265,23 @@ Gives the value in ordinal words.
 "cases".toQuantity(2, showAsQuantity = ShowQuantityAs.Words) => "two cases"
 ```
 
+### Extension method toQuantity for Int objects
+
+```kotlin
+1.toQuantity("case") => "1 case"
+1.toQuantity("cases") => "1 case"
+10.toQuantity("case") => "10 cases"
+
+1.toQuantity("cases", showAsQuantity = ShowQuantityAs.None) => "case"
+2.toQuantity("cases", showAsQuantity = ShowQuantityAs.None) => "cases"
+
+1.toQuantity("cases", showAsQuantity = ShowQuantityAs.Numeric) => "1 case"
+2.toQuantity("cases", showAsQuantity = ShowQuantityAs.Numeric) => "1 case"
+
+1.toQuantity("cases", showAsQuantity = ShowQuantityAs.Words) => "one case"
+2.toQuantity("cases", showAsQuantity = ShowQuantityAs.Words) => "two cases"
+```
+
 ## <a id="humanize">Humanize</a>
 
 ### Extension method humanize for String objects
@@ -281,4 +300,36 @@ Turns pascalcased strings into sentences.
 "CanReturnSentenceCase".humanize(LetterCasing.Sentence) => "Can return sentence case"
 
 "CanHumanizeIntoUpperCase".humanize(LetterCasing.AllCaps) => "CAN HUMANIZE INTO UPPER CASE"
+```
+
+## <a id="dehumanize">Dehumanize</a>
+
+### Extension method dehumanize for String objects
+
+Turns sentences into pascalcased strings.
+
+```kotlin
+"Pascal case input string is turned into sentence".dehumanize() => "PascalCaseInputStringIsTurnedIntoSentencePascal case input string is turned into sentence"
+```
+
+## <a id="romannumerals">RomanNumerals</a>
+
+### Extension method toRoman for Int objects
+
+Turns an Int into Roman numeral. Limit from 1 to 3999.
+
+```kotlin
+1.toRoman() => "I"
+2.toRoman() => "II"
+4.toRoman() => "IV"
+```
+
+### Extension method fromRoman for String objects
+
+Turns a Roman numeral into an Int. Limit from 1 to 3999.
+
+```kotlin
+"I".toRoman() => 1
+"II".toRoman() => 2
+"IV".toRoman() => 4
 ```

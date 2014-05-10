@@ -1,6 +1,7 @@
 package org.humanizer.jvm
 
 import java.util.regex.Pattern
+import org.humanizer.jvm.exceptions.NoRuleFoundException
 
 fun String.camelize(): String {
     var previousWasUnderscore = false
