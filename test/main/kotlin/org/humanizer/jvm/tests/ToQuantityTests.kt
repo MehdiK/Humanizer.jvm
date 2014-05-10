@@ -43,6 +43,28 @@ public class ToQuantityTests() : Spek() {
         }
 
         data = listOf(
+                ParamClass("case", 0, "0 cases"),
+                ParamClass("case", 1, "1 case"),
+                ParamClass("case", 5, "5 cases"),
+                ParamClass("man", 0, "0 men"),
+                ParamClass("man", 1, "1 man"),
+                ParamClass("man", 2, "2 men"),
+                ParamClass("men", 2, "2 men"),
+                ParamClass("process", 2, "2 processes"),
+                ParamClass("process", 1, "1 process"),
+                ParamClass("processes", 2, "2 processes"),
+                ParamClass("processes", 1, "1 process"))
+
+        givenData(data) {
+            on("calling toQuantity on quantity ${it.quantity} with unit ${it.value}", {
+                val actual = it.quantity.toQuantity(it.value)
+                it("should be \"${it.expected}\"", {
+                    shouldEqual(it.expected, actual)
+                })
+            })
+        }
+
+        data = listOf(
                 ParamClass("case", 0, "cases"),
                 ParamClass("case", 1, "case"),
                 ParamClass("case", 5, "cases"),

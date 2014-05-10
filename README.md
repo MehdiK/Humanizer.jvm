@@ -263,6 +263,23 @@ Gives the value in ordinal words.
 "cases".toQuantity(2, showAsQuantity = ShowQuantityAs.Words) => "two cases"
 ```
 
+### Extension method toQuantity for Int objects
+
+```kotlin
+1.toQuantity("case") => "1 case"
+1.toQuantity("cases") => "1 case"
+10.toQuantity("case") => "10 cases"
+
+1.toQuantity("cases", showAsQuantity = ShowQuantityAs.None) => "case"
+2.toQuantity("cases", showAsQuantity = ShowQuantityAs.None) => "cases"
+
+1.toQuantity("cases", showAsQuantity = ShowQuantityAs.Numeric) => "1 case"
+2.toQuantity("cases", showAsQuantity = ShowQuantityAs.Numeric) => "1 case"
+
+1.toQuantity("cases", showAsQuantity = ShowQuantityAs.Words) => "one case"
+2.toQuantity("cases", showAsQuantity = ShowQuantityAs.Words) => "two cases"
+```
+
 ## <a id="humanize">Humanize</a>
 
 ### Extension method humanize for String objects

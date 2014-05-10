@@ -24,6 +24,11 @@ fun String.toQuantity(quantity: Int, showQuantityAs: ShowQuantityAs = ShowQuanti
     return this
 }
 
+fun Int.toQuantity(unit: String, showQuantityAs: ShowQuantityAs = ShowQuantityAs.Numeric) : String
+{
+    return unit.toQuantity(this, showQuantityAs)
+}
+
 enum class ShowQuantityAs
 {
         None
