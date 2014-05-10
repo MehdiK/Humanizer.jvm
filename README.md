@@ -15,6 +15,7 @@ The current build status on the CI server is <a href="http://teamcity.jetbrains.
    - [Number to words] (#numbertowords)
    - [To quantity] (#toquantity)
    - [Humanize] (#humanize)
+   - [DeHumanize] (#dehumanize)
 
 # <a id="features">Features</a>
 
@@ -298,4 +299,14 @@ Turns pascalcased strings into sentences.
 "CanReturnSentenceCase".humanize(LetterCasing.Sentence) => "Can return sentence case"
 
 "CanHumanizeIntoUpperCase".humanize(LetterCasing.AllCaps) => "CAN HUMANIZE INTO UPPER CASE"
+```
+
+## <a id="dehumanize">Dehumanize</a>
+
+### Extension method dehumanize for String objects
+
+Turns sentences into pascalcased strings.
+
+```kotlin
+"Pascal case input string is turned into sentence".dehumanize() => "PascalCaseInputStringIsTurnedIntoSentencePascal case input string is turned into sentence"
 ```
