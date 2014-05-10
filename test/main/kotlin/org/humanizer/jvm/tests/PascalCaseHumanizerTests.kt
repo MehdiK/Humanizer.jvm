@@ -6,8 +6,8 @@ import java.util.ArrayList
 import java.util.HashMap
 import org.spek.*
 import org.humanizer.jvm.humanize
-import org.humanizer.jvm.LetterCasing
-import org.humanizer.jvm.checkAllCaps
+import org.humanizer.jvm.letterCasings.checkAllCaps
+import org.humanizer.jvm.letterCasings.LetterCasing
 
 public class PascalCaseHumanizerTests(): Spek() {
     {

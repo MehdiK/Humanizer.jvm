@@ -8,8 +8,8 @@ fun String.humanize(letterCasing : LetterCasing = LetterCasing.Sentence): String
          LetterCasing.AllCaps -> return this.letterCasingUpperCase()
          LetterCasing.Title -> return this.letterCasingTitle()
          LetterCasing.Sentence -> return this.letterCasingSentence()
-         else -> return throw UnsupportedLetterCasingException()
      }
+    return this
  }
 
 
