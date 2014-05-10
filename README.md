@@ -16,6 +16,7 @@ The current build status on the CI server is <a href="http://teamcity.jetbrains.
    - [To quantity] (#toquantity)
    - [Humanize] (#humanize)
    - [DeHumanize] (#dehumanize)
+   - [Roman numerals] (#romannumerals)
 
 # <a id="features">Features</a>
 
@@ -309,4 +310,26 @@ Turns sentences into pascalcased strings.
 
 ```kotlin
 "Pascal case input string is turned into sentence".dehumanize() => "PascalCaseInputStringIsTurnedIntoSentencePascal case input string is turned into sentence"
+```
+
+## <a id="romannumerals">RomanNumerals</a>
+
+### Extension method toRoman for Int objects
+
+Turns an Int into Roman numeral. Limit from 1 to 3999.
+
+```kotlin
+1.toRoman() => "I"
+2.toRoman() => "II"
+4.toRoman() => "IV"
+```
+
+### Extension method fromRoman for String objects
+
+Turns a Roman numeral into an Int. Limit from 1 to 3999.
+
+```kotlin
+"I".toRoman() => 1
+"II".toRoman() => 2
+"IV".toRoman() => 4
 ```
