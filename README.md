@@ -56,6 +56,22 @@ cal.getTime.add(Calendar.HOURS, 2)
 cal.getTime().Humanize() => "2 hours from now"
 ```
 
+## <a id="millisecondstotimespan">Milliseconds to timespan</a>
+
+### Extension method millisecondsToTimespan for Int and Long objects
+
+Since difference between dates are returned as milliseconds this method turns them into a readable form/
+ This is a naive implementation and does not account for leapseconds, this is the nature of this method.
+ By default the milliseconds precision is turned off but you can add it by passing true.
+
+```kotlin
+1.milliSecondsToTimespan() => "0 seconds"
+1.milliSecondsToTimespan(true) => "0 seconds and 1 millisecond"
+
+99999999.milliSecondsToTimespan() => "1 day and 3 hours and 46 minutes and 39 seconds"
+99999999.milliSecondsToTimespan(true) => "1 day and 3 hours and 46 minutes and 39 seconds and 999 milliseconds"
+```
+
 ## <a id="ordinalize">Ordinalize</a>
 
 ### Extension method Ordinalize for Int objects
