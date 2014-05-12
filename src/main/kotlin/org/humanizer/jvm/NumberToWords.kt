@@ -3,8 +3,12 @@ package org.humanizer.jvm
 import java.util.ArrayList
 
 fun Int.toWords(): String {
+    return this.toLong().toWords()
+}
+
+fun Long.toWords(): String {
     var number = this
-    if (number == 0)
+    if (number == 0L)
         return "zero"
 
     if (number < 0)
@@ -37,11 +41,11 @@ fun Int.toWords(): String {
             parts.add("and");
 
         if (number < 20)
-            parts.add(unitsMap()[number])
+            parts.add(unitsMap()[number.toInt()])
         else {
-            var lastPart = tensMap()[number / 10]
+            var lastPart = tensMap()[number.toInt() / 10]
             if ((number % 10) > 0)
-                lastPart += "-${unitsMap()[number % 10]}"
+                lastPart += "-${unitsMap()[number.toInt() % 10]}"
 
             parts.add(lastPart)
         }
