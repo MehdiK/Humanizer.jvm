@@ -13,11 +13,11 @@ public class PascalCaseHumanizerTests(): Spek() {
     {
 
         var data = listOf(
-        "PascalCaseInputStringIsTurnedIntoSentence" to"Pascal case input string is turned into sentence",
-        "WhenIUseAnInputAHere" to"When I use an input a here",
-        "10IsInTheBegining" to"10 is in the begining",
-        "NumberIsAtTheEnd100" to"Number is at the end 100",
-        "XIsFirstWordInTheSentence" to"X is first word in the sentence")
+        "PascalCaseInputStringIsTurnedIntoSentence" to "Pascal case input string is turned into sentence",
+        "WhenIUseAnInputAHere" to "When I use an input a here",
+        "10IsInTheBegining" to "10 is in the begining",
+        "NumberIsAtTheEnd100" to "Number is at the end 100",
+        "XIsFirstWordInTheSentence" to "X is first word in the sentence")
 
         givenData(data) {
             val (input ,expected) = it

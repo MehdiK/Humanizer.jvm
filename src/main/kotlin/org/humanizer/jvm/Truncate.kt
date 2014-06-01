@@ -1,6 +1,7 @@
 package org.humanizer.jvm
 
 import org.humanizer.jvm.truncators.*
+import org.humanizer.jvm.exceptions.UnsupportedTruncatorException
 
 fun String.truncate(length: Int, truncationString: String = "…", truncator: Truncator = Truncator.FixedLength, truncateFrom: TruncateFrom = TruncateFrom.Right) : String {
     when (truncator) {
