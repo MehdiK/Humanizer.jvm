@@ -1,4 +1,4 @@
-package org.humanizer.jvm.truncators
+package org.humanizer.jvm
 
 fun truncateFixedLength(value: String, length: Int, truncationString: String, truncateFrom: TruncateFrom) : String
 {
