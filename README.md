@@ -1,6 +1,6 @@
 <p><img src="https://raw.github.com/MehdiK/Humanizer/master/logo.png" alt="Logo" style="max-width:100%;" /></p>
 
-Humanizer.jvm is an adaptation of the humanizer framework for .Net which is made for the jvm and is written in kotlin.
+Humanizer.jvm is an adaptation of the humanizer framework for .Net which is made for the jvm and is written in Kotlin.
 Humanizer.jvm meets all your jvm needs for manipulating and displaying strings, enums, dates, times, timespans, numbers and quantities.
 
 The current build status on the CI server is <a href="http://teamcity.jetbrains.com/viewType.html?buildTypeId=HumanizerJvm_FullBuildAndTests&guest=1">
