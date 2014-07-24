@@ -122,6 +122,7 @@ private fun String.singularizer() : String {
     val endswith = exceptions().firstOrNull { this.endsWith(it.component2()) }
     if (endswith != null) return this.replace(endswith.component2(), endswith.component1())
     try{
+        if(singularizeRules().count { Pattern.compile(it.component1(), Pattern.CASE_INSENSITIVE).matcher(this).find() } == 0 ) return this
         val rule = singularizeRules().last { Pattern.compile(it.component1(), Pattern.CASE_INSENSITIVE).matcher(this).find() }
         return Pattern.compile(rule.component1(), Pattern.CASE_INSENSITIVE).matcher(this).replaceAll(rule.component2())}
     catch(ex : IllegalArgumentException) {
