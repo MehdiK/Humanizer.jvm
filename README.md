@@ -1,12 +1,11 @@
-<p><img src="https://raw.github.com/MehdiK/Humanizer/master/logo.png" alt="Logo" style="max-width:100%;" /></p>
+![Logo](https://raw.github.com/MehdiK/Humanizer/master/logo.png)
 
 Humanizer.jvm is an adaptation of the humanizer framework for .Net which is made for the jvm and is written in Kotlin.
 Humanizer.jvm meets all your jvm needs for manipulating and displaying strings, enums, dates, times, timespans, numbers and quantities.
 
-The current build status on the CI server is <a href="http://teamcity.jetbrains.com/viewType.html?buildTypeId=HumanizerJvm_FullBuildAndTests&guest=1">
-<img src="http://teamcity.jetbrains.com/app/rest/builds/buildType:(id:HumanizerJvm_FullBuildandTests)/statusIcon"/></a>
+The current build status on the CI server is [![status](http://teamcity.jetbrains.com/app/rest/builds/buildType:(id:HumanizerJvm_FullBuildandTests)/statusIcon)](http://teamcity.jetbrains.com/viewType.html?buildTypeId=HumanizerJvm_FullBuildAndTests&guest=1)
 
-###Table of contents
+# Table of contents
  - [Features](#features)
    - [Humanize date](#humanize-date)
    - [Ordinalize](#ordinalize)
@@ -177,7 +176,7 @@ Replaces underscores with hyphens in as String
 Decapitalizes first word and removes underscores while capitalizing the next letter in a String
 
 ```kotlin
-"customer_first_name".pascalize() => "customerFirstName"
+"customer_first_name".camelize() => "customerFirstName"
 ```
 
 ### Extension method pascalize for String objects
