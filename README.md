@@ -306,7 +306,7 @@ Turns pascalcased strings into sentences.
 ```kotlin
 "PascalCaseInputStringIsTurnedIntoSentence".humanize() => "Pascal case input string is turned into sentence"
 "Underscored_input_String_is_turned_INTO_sentence".humanize() => "Underscored input String is turned INTO sentence"
-""HTMLIsTheLanguage".humanize() => "HTML is the language"
+"HTMLIsTheLanguage".humanize() => "HTML is the language"
 
 "CanReturnTitleCase".humanize(LetterCasing.Title) => "Can Return Title Case"
 
