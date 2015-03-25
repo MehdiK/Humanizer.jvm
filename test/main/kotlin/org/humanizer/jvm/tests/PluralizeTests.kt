@@ -1,9 +1,9 @@
 package org.humanizer.jvm.tests
 
-import org.spek.Spek
-import org.spek.givenData
+import org.jetbrains.spek.api.Spek
+import org.jetbrains.spek.api.givenData
 import org.humanizer.jvm.titleize
-import org.spek.shouldEqual
+import org.jetbrains.spek.api.shouldEqual
 import org.humanizer.jvm.pluralize
 import org.humanizer.jvm.singularize
 import java.util.GregorianCalendar
@@ -12,7 +12,7 @@ import org.humanizer.jvm.humanize
 import java.util.ArrayList
 
 public class PluralizeTests() : Spek() {
-    {
+    init {
         var data = listOf(
                 "search" to  "searches",
                 "switch" to  "switches",
@@ -270,7 +270,7 @@ public class PluralizeTests() : Spek() {
                     val key = it.key
                     val count = data.count { it.first == key }
                     Pair(key, count)
-                }.filter { it.second > 1 }.map { it.first }.makeString(",")
+                }.filter { it.second > 1 }.map { it.first }.join(",")
                 it("should be empty for all groups", {
                     shouldEqual("", doubles)
                 })

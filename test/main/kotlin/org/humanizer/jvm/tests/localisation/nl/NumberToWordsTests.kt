@@ -1,15 +1,15 @@
 package org.humanizer.jvm.tests.localisation.nl
 
-import org.spek.Spek
-import org.spek.givenData
+import org.jetbrains.spek.api.Spek
+import org.jetbrains.spek.api.givenData
 import org.humanizer.jvm.toQuantity
-import org.spek.shouldEqual
+import org.jetbrains.spek.api.shouldEqual
 import org.humanizer.jvm.toWords
 import org.humanizer.jvm.toOrdinalWords
 import org.humanizer.jvm.localisation.nl.NumberToWords
 
 public class NumberToWordsTests() : Spek() {
-    {
+    init {
 
         var data = listOf(
                 0 to "nul",

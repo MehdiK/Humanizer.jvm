@@ -5,5 +5,5 @@ fun String.dehumanize() : String
     return this
             .split(" ")
             .let{it.map{it.capitalize()}}
-            .makeString("")
+            .join("")
 }

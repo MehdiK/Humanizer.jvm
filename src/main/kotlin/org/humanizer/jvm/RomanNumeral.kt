@@ -30,15 +30,15 @@ fun Int.toRoman() : String
 
 fun String.fromRoman() : Int
 {
-    var input = this.trim().toUpperCase();
+    var input = this.trim().toUpperCase()
 
-    var length = input.length;
+    var length = input.length()
 
     if ((length == 0) || input.isInvalidRomanNumeral())
-        throw ArgumentException("Empty or invalid Roman numeral string. The input was $input.");
+        throw ArgumentException("Empty or invalid Roman numeral string. The input was $input.")
 
-    var total = 0;
-    var i = length;
+    var total = 0
+    var i = length()
 
     while (i > 0)
     {

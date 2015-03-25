@@ -2,19 +2,19 @@ package org.humanizer.jvm
 
 fun truncateFixedLength(value: String, length: Int, truncationString: String, truncateFrom: TruncateFrom) : String
 {
-    var adjustedLength = length - (truncationString.length - 1)
+    var adjustedLength = length - (truncationString.length() - 1)
     var adjustedTruncationString = truncationString
     if(adjustedLength <= 0) {
         adjustedLength = length + 1
         adjustedTruncationString = ""
     }
-    if (value.length <= length) return value
-    if (truncateFrom == TruncateFrom.Left) return "${adjustedTruncationString}${value.substring(value.length - adjustedLength + 1, value.length)}"
+    if (value.length() <= length) return value
+    if (truncateFrom == TruncateFrom.Left) return "${adjustedTruncationString}${value.substring(value.length() - adjustedLength + 1, value.length())}"
     return "${value.substring(0, adjustedLength - 1)}${adjustedTruncationString}"
 }
 
 fun truncateFixedNumberOfCharacters(value: String, length: Int, truncationString: String, truncateFrom: TruncateFrom) : String {
-    var adjustedLength = length - (truncationString.length - 1)
+    var adjustedLength = length - (truncationString.length() - 1)
     var adjustedTruncationString = truncationString
     if (adjustedLength <= 0) {
         adjustedLength = length + 1
@@ -59,7 +59,7 @@ fun truncateFixedNumberOfWords(value: String, length: Int, truncationString: Str
     else {
         var t = ""
         var l2 = 0
-        value.trimTrailing().reverse().forEach {
+        value.trimEnd().reverse().forEach {
             if (Character.isWhitespace(it)) l2++
             if(length > l2){ t = t+it}
         }

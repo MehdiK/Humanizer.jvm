@@ -1,8 +1,8 @@
 package org.humanizer.jvm.tests
 
-import org.spek.Spek
-import org.spek.givenData
-import org.spek.shouldEqual
+import org.jetbrains.spek.api.Spek
+import org.jetbrains.spek.api.givenData
+import org.jetbrains.spek.api.shouldEqual
 import org.humanizer.jvm.truncate
 import org.humanizer.jvm.TruncateFrom
 import org.humanizer.jvm.Truncator
@@ -21,7 +21,7 @@ public class TruncateTests(): Spek() {
 
 
     }
-    {
+    init {
 
         var data = listOf(
                 ParamClass("", 10, ""),

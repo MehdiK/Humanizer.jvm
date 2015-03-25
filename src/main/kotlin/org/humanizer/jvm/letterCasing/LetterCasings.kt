@@ -21,7 +21,7 @@ fun String.letterCasingTitle(): String {
     return this
             .split(letterCasingRegex("|(_)|(-)"))
             .let{ it.map{ if(it.checkAllCaps() && it.length() > 1) it else it.capitalize()} }
-            .makeString(" ")
+            .join(" ")
 }
 
 fun String.letterCasingLowerCase() : String {
@@ -39,7 +39,7 @@ fun String.letterCasingSentence(): String {
         return this
                 .split(letterCasingRegex())
                 .let{ it.map{ if(it.checkAllCaps() && it.length() > 1) it else it.toLowerCase()} }
-                .makeString(" ")
+                .join(" ")
                 .capitalize()
                 .replace(" i ", " I ")
 }

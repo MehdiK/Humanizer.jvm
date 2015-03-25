@@ -1,14 +1,14 @@
 package org.humanizer.jvm.tests
 
-import org.spek.Spek
-import org.spek.givenData
+import org.jetbrains.spek.api.Spek
+import org.jetbrains.spek.api.givenData
 import org.humanizer.jvm.humanize
-import org.spek.shouldEqual
+import org.jetbrains.spek.api.shouldEqual
 import org.humanizer.jvm.dehumanize
 import org.humanizer.jvm.milliSecondsToTimespan
 
 public class TimeSpanTests(): Spek() {
-    {
+    init {
 
         var data = listOf(
                 1 to "0 seconds",

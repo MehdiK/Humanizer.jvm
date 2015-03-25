@@ -4,13 +4,13 @@ import org.junit.Test as Test
 import kotlin.test.assertEquals
 import java.util.ArrayList
 import java.util.HashMap
-import org.spek.*
+import org.jetbrains.spek.api.*
 import org.humanizer.jvm.humanize
 import org.humanizer.jvm.letterCasings.checkAllCaps
 import org.humanizer.jvm.letterCasings.LetterCasing
 
 public class PascalCaseHumanizerTests(): Spek() {
-    {
+    init {
 
         var data = listOf(
         "PascalCaseInputStringIsTurnedIntoSentence" to "Pascal case input string is turned into sentence",
