@@ -1,13 +1,13 @@
 package org.humanizer.jvm.tests
 
-import org.spek.givenData
+import org.jetbrains.spek.api.givenData
 import org.humanizer.jvm.humanize
-import org.spek.shouldEqual
-import org.spek.Spek
+import org.jetbrains.spek.api.shouldEqual
+import org.jetbrains.spek.api.Spek
 import org.humanizer.jvm.ordinalize
 
 public class OrdinalizeTests() : Spek() {
-    {
+    init {
     val data = listOf(
             "0" to "0th",
             "1" to "1st",

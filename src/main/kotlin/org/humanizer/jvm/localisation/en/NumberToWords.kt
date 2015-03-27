@@ -52,7 +52,7 @@ public class NumberToWords {
             }
         }
 
-        return parts.makeString(" ").trimLeading()
+        return parts.join(" ").trimStart()
     }
 
     public fun toOrdinalWords(value: Int): String {
@@ -95,12 +95,12 @@ public class NumberToWords {
     }
 
     private fun normalNumberToWords(number: Int): String {
-        var towords = toWords(number).replace('-', ' ').trimLeading()
+        var towords = toWords(number).replace('-', ' ').trimStart()
 
         towords = removeOnePrefix(towords)
         // twenty => twentieth
         if (towords.endsWith("y"))
-            towords = "${towords.substring(0, towords.length - 1)}ie"
+            towords = "${towords.substring(0, towords.length() - 1)}ie"
 
         return "${towords}th"
     }

@@ -1,6 +1,6 @@
 package org.humanizer.jvm
 
-import java.util.ArrayList
+import org.humanizer.jvm.localisation
 import java.util.Locale
 
 fun Int.toWords(): String {

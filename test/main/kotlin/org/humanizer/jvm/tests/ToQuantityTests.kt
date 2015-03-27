@@ -1,9 +1,9 @@
 package org.humanizer.jvm.tests
 
-import org.spek.Spek
-import org.spek.givenData
+import org.jetbrains.spek.api.Spek
+import org.jetbrains.spek.api.givenData
 import org.humanizer.jvm.truncate
-import org.spek.shouldEqual
+import org.jetbrains.spek.api.shouldEqual
 import org.humanizer.jvm.toQuantity
 import org.humanizer.jvm.ShowQuantityAs
 
@@ -18,7 +18,7 @@ public class ToQuantityTests() : Spek() {
             return "\"$value\" "
         }
     }
-    {
+    init {
 
         var data = listOf(
                 ParamClass("case", 0, "0 cases"),

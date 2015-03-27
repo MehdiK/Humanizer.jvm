@@ -64,7 +64,7 @@ public class NumberToWords {
 
         var postFix = "de"
         val endingCharForSte = listOf ('t', 'g', 'd')
-        endingCharForSte.forEach { if (word.lastIndexOf(it) == (word.length - 1))
+        endingCharForSte.forEach { if (word.lastIndexOf(it) == (word.length() - 1))
             postFix = "ste" }
 
         return word + postFix
@@ -86,7 +86,7 @@ public class NumberToWords {
 
     private fun exceptionNumbersToWords(number: String): String {
         if (OrdinalExceptions().count { number.endsWith(it.first) } == 1)
-            return number.substring(0, number.length - OrdinalExceptions().first { number.endsWith(it.first) }.first.length) + OrdinalExceptions().first { number.endsWith(it.first) }.second
+            return number.substring(0, number.length() - OrdinalExceptions().first { number.endsWith(it.first) }.first.length()) + OrdinalExceptions().first { number.endsWith(it.first) }.second
         return ""
     }
 

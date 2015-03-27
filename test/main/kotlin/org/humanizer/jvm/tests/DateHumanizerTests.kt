@@ -1,14 +1,13 @@
 package org.humanizer.jvm.tests
 
-import org.junit.Test as Test
-import kotlin.test.assertEquals
-import java.util.ArrayList
-import java.util.HashMap
-import org.spek.*
 import org.humanizer.jvm.humanize
+import org.jetbrains.spek.api.Spek
+import org.jetbrains.spek.api.givenData
+import org.jetbrains.spek.api.shouldEqual
 import java.util.Calendar
 import java.util.Date
 import java.util.GregorianCalendar
+import org.junit.Test as Test
 
 public class DateHumanizerTests(): Spek() {
 
@@ -23,7 +22,7 @@ public class DateHumanizerTests(): Spek() {
             return "a date and $input"
         }
     }
-    {
+    init {
 
         val data = listOf(
                 ParamClass(Calendar.SECOND, -1, "one second ago"),

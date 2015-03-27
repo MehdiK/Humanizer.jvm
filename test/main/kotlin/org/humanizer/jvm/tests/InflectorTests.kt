@@ -1,13 +1,13 @@
 package org.humanizer.jvm.tests
 
-import org.spek.Spek
-import org.spek.givenData
+import org.jetbrains.spek.api.Spek
+import org.jetbrains.spek.api.givenData
 import org.humanizer.jvm.truncate
-import org.spek.shouldEqual
+import org.jetbrains.spek.api.shouldEqual
 import org.humanizer.jvm.*
 
 public class InflectorTests(): Spek() {
-    {
+    init {
         var data = listOf(
                 "some title" to "Some Title",
                 "some-title" to "Some Title",
