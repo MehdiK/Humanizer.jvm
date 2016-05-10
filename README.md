@@ -344,7 +344,7 @@ Turns an Int into Roman numeral. Limit from 1 to 3999.
 Turns a Roman numeral into an Int. Limit from 1 to 3999.
 
 ```kotlin
-"I".toRoman() => 1
-"II".toRoman() => 2
-"IV".toRoman() => 4
+"I".fromRoman() => 1
+"II".fromRoman() => 2
+"IV".fromRoman() => 4
 ```
