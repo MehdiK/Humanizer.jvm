@@ -9,13 +9,13 @@ The current build status on the CI server is [![status](http://teamcity.jetbrain
  - [Features](#features)
    - [Humanize date](#humanize-date)
    - [Ordinalize](#ordinalize)
-   - [Truncate] (#truncate)
-   - [Inflector] (#inflector)
-   - [Number to words] (#numbertowords)
-   - [To quantity] (#toquantity)
-   - [Humanize] (#humanize)
-   - [DeHumanize] (#dehumanize)
-   - [Roman numerals] (#romannumerals)
+   - [Truncate](#truncate)
+   - [Inflector](#inflector)
+   - [Number to words](#numbertowords)
+   - [To quantity](#toquantity)
+   - [Humanize](#humanize)
+   - [DeHumanize](#dehumanize)
+   - [Roman numerals](#romannumerals)
 
 # <a id="features">Features</a>
 
